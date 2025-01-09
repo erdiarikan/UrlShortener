@@ -19,12 +19,4 @@ class EncodeRequest extends FormRequest
     {
         return true;
     }
-
-    protected function failedValidation(Validator $validator)
-    {
-        throw new ValidationException($validator, response()->json([
-            'message' => 'Validation error.',
-            'errors' => $validator->errors(),
-        ], 422));
-    }
 }
