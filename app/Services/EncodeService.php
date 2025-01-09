@@ -21,13 +21,21 @@ class EncodeService
             return url($cachedShortCode);
         }
 
-        do {
-            $shortCode = Str::random(6);
-        } while (Cache::has($this->cachePrefix . $shortCode));
+        $shortCode = $this->generateUniqueShortCode();
 
         Cache::put($this->cachePrefix . md5($originalUrl), $shortCode);
         Cache::put($this->cachePrefix . $shortCode, $originalUrl);
 
         return url($shortCode);
+    }
+
+    private function generateUniqueShortCode(): string
+    {
+        while (true) {
+            $shortCode = Str::random(6);
+            if (!Cache::has($this->cachePrefix . $shortCode)) {
+                return $shortCode;
+            }
+        }
     }
 }
