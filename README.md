@@ -35,13 +35,13 @@ Installation
 
         ./vendor/bin/sail up -d
  
-4. Generate a new application key:
+5. Generate a new application key:
 
         ./vendor/bin/sail artisan key:generate
- 
-5. Install dependencies:
 
-        ./vendor/bin/sail composer install
+6. Migrate the database:
+
+       ./vendor/bin/sail artisan migrate
 
 Usage
 -----
