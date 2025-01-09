@@ -22,3 +22,9 @@ it('returns 404 for a non-existent short URL', function () {
     $response->assertStatus(404)
         ->assertJson(['error' => 'Short URL not found']);
 });
+
+it('returns 422 for an invalid URL', function () {
+    $response = $this->postJson('/api/encode', ['url' => 'example']);
+    $response->assertStatus(422)
+        ->assertJson(['message' => 'Validation error.']);
+});
