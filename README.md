@@ -14,7 +14,7 @@ Requirements
 ------------
 
 *   Docker
-*   Laravel 11.x
+*   Composer
 
 Installation
 ------------
@@ -27,7 +27,11 @@ Installation
 
         cp .env.example .env
 
-3. Start Docker and run Laravel Sail:
+3. Install composer dependencies:
+
+        composer install
+
+4. Start Docker and run Laravel Sail:
 
         ./vendor/bin/sail up -d
  
